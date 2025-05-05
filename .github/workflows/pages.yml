@@ -5,23 +5,22 @@ on:
     - cron: '0 0 * * *'  # Corre diariamente
   workflow_dispatch:      # Permite ejecutar manualmente
   push:
-    branches: [ "main" ]  # Solo en la rama principal
+    branches: [ "main" ]
   issues:
     types: [opened, closed, edited, deleted]
   milestone:
     types: [created, closed, edited, deleted]
 
-# Corregimos la sintaxis de los permisos
 permissions:
-  contents: write    # Para repo y wiki
-  pages: write      # Para GitHub Pages
-  id-token: write   # Para autenticación
-  issues: read          # Para leer issues
-  pull-requests: write  # Para PR y merge
+  contents: write
+  pages: write
+  id-token: write
+  issues: read
+  pull-requests: write
   repository-projects: write
-  actions: read         # Para acceder a las acciones
-  deployments: write    # Para despliegues
-  statuses: write       # Para actualizar estados
+  actions: read
+  deployments: write
+  statuses: write
 
 env:
   GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
@@ -45,8 +44,6 @@ jobs:
           pip install PyGithub markdown2 jinja2 requests
 
       - name: Fetch MercadoPago Service Issues and Milestones
-        env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         run: |
           python scripts/fetch_github_data.py
 
@@ -56,7 +53,7 @@ jobs:
 
       - name: Generate MercadoPago Wiki
         env:
-          GITHUB_TOKEN: ${{ secrets.WIKI_TOKEN }}
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}  # ✅ USAMOS EL TOKEN CORRECTO
         run: |
           git config --global user.name "github-actions[bot]"
           git config --global user.email "github-actions[bot]@users.noreply.github.com"
