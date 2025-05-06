@@ -2,13 +2,13 @@
 layout: default
 ---
 
-# UM Tesorería MercadoPago Service
+# STEAM CLONE
 
-Bienvenido a la documentación del servicio de MercadoPago de UM Tesorería.
+Bienvenido a la documentación del servicio de Steam clone.
 
 ## Descripción
 
-Este es el servicio de integración con MercadoPago para la arquitectura de microservicios de UM Tesorería. 
+Este es el servicio de integración con MercadoPago para Steam Clne. 
 Proporciona funcionalidades para procesar pagos, gestionar preferencias de pago y manejar webhooks de MercadoPago.
 
 ## Navegación
